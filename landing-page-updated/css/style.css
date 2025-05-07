@@ -1,0 +1,8 @@
+
+body {
+  scroll-behavior: smooth;
+}
+
+.card i {
+  color: #007bff;
+}
