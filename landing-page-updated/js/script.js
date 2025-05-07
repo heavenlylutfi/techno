@@ -1,22 +1,29 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("orderForm");
 
-document.getElementById("orderForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const nama = document.getElementById("nama").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const nohp = document.getElementById("nohp").value.trim();
-  const warna = document.getElementById("warna").value.trim();
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  if (!nama || !email || !nohp || !warna) {
-    alert("Semua field wajib diisi!");
-    return;
-  }
+    const nama = form.elements["nama"].value.trim();
+    const email = form.elements["email"].value.trim();
+    const nohp = form.elements["nohp"].value.trim();
+    const warna = form.elements["warna"].value.trim();
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    alert("Email tidak valid!");
-    return;
-  }
+    // Validasi field kosong
+    if (!nama || !email || !nohp || !warna) {
+      alert("Semua field wajib diisi!");
+      return;
+    }
 
-  alert("Terima kasih telah melakukan pre-order!");
-  this.reset();
+    // Validasi format email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Email tidak valid!");
+      return;
+    }
+
+    // Jika semua validasi lolos
+    alert("Terima kasih telah melakukan pre-order!");
+    form.reset();
+  });
 });
